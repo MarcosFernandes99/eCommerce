@@ -14,7 +14,10 @@ console.log(avaliacao)
 }
 
 var buscarID = parseInt(prompt(`Qual ID deseja buscar`))
-BuscarProdutoID(buscarID)    
+BuscarProdutoID(buscarID)
+
+var produto = prompt(`Qual produto quer buscar?`)
+BuscarProdutoNome(produto)
 
 
 
@@ -36,5 +39,13 @@ function BuscarProdutoID(idParametro){
         if(idParametro == id[i]){       
             console.log(`ID: ${id[i]}, Produto: ${nome[i]}, Preço: R$${preco[i]}, Avaliação: ${avaliacao[i]}`)
           }
+    }
+}
+
+function BuscarProdutoNome(produtoParametro){
+    for(var i = 0; i < contador; i++){
+        if(produtoParametro == nome[i]){
+            console.log(`ID do produto buscado: ${id[i]}`)
+        }
     }
 }
