@@ -29,9 +29,12 @@ OrdenarPorPreco()
 
 OrdenarPorAvaliacao()
 
-var idProduto = parseInt(prompt(`Qual ID deseja buscar?`))
+var idProduto = parseInt(prompt(`Qual ID deseja buscar para atualizar o valor?`))
 var novoPreco = parseFloat(prompt(`Qual o valor atualizado?`))
 AtualizarPrecoProduto(idProduto, novoPreco)
+
+var excluirProduto = prompt(`Qual produto deseja excluir`)
+DeletarProduto(excluirProduto)
 
 
 function CadastrarProduto(){
@@ -148,4 +151,54 @@ function AtualizarPrecoProduto(idParametro, precoParametro){
         }
     }
     console.log("Preço: ", "R$", preco)
+}
+
+function DeletarProduto(excluirParametro){
+    for(var i = 0; i < contador; i++){
+        if(excluirParametro == nome[i]){
+            id[i] = 0
+            nome[i] = 0
+            preco[i] = 0
+            avaliacao[i] = 0
+        }
+    }
+    for(var atual = 0; atual < contador - 1; atual++){
+        for(var seguinte = atual + 1; seguinte < contador; seguinte++){
+            if(id[atual] == 0){
+                id[atual] = id[seguinte]
+                id[seguinte] = 0
+                nome[atual] = nome[seguinte]
+                nome[seguinte] = 0
+                preco[atual] = preco[seguinte]
+                preco[seguinte] = 0
+                avaliacao[atual] = avaliacao[seguinte]
+                avaliacao[seguinte] = 0
+            }
+        }
+    }
+
+    idAux = []
+    nomeAux = []
+    precoAux = []
+    avaliacaoAux = []
+
+    for(var index = 0; index < contador; index++){
+        if(id[index] != 0){
+            idAux[index] = id[index]
+            nomeAux[index] = nome[index]
+            precoAux[index] = preco[index]
+            avaliacaoAux[index] = avaliacao[index]
+        }
+    }
+
+    id = idAux
+    nome = nomeAux
+    preco = precoAux
+    avaliacao = avaliacaoAux
+    contador--
+
+console.log("ID:", id)
+console.log("Nome: ", nome)
+console.log("Preço: ", "R$", preco)
+console.log("Avaliação: ", avaliacao)
 }
