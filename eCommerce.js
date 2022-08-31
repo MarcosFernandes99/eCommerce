@@ -12,7 +12,7 @@ CadastrarProduto()
 
 console.log("ID:", id)
 console.log("Nome: ", nome)
-console.log("Preço: ", preco)
+console.log("Preço: ", "R$", preco)
 console.log("Avaliação: ", avaliacao)
 
 }
@@ -24,19 +24,19 @@ var produto = prompt(`Qual produto quer buscar?`)
 BuscarProdutoNome(produto)
 
 OrdenarPorID()
-console.log("ID:", id)
-
 
 OrdenarPorPreco()
-console.log("Preço: ", preco)
+
+OrdenarPorAvaliacao()
+
 
 
 
 function CadastrarProduto(){
-    id[contador] = prompt(`Qual o ID produto`)
+    id[contador] = parseInt(prompt(`Qual o ID produto`))
     nome[contador] = prompt(`Qual o nome do produto`)
     preco[contador] = parseFloat(prompt(`Qual o preço do produto`))
-    avaliacao[contador] = prompt(`Qual a avaliação do produto`)
+    avaliacao[contador] = parseInt(prompt(`Qual a avaliação do produto`))
     contador++
     
     continuar = prompt(`Deseja continuar/ 1-SIM / 2-NÃO`)
@@ -64,11 +64,11 @@ function BuscarProdutoNome(produtoParametro){
 function OrdenarPorID(){
     for(var atual = 0; atual < contador - 1; atual++){
         for(var seguinte = atual + 1; seguinte < contador; seguinte++ ){
-            idAux = id[atual]
+            idAux = id[atual] 
             nomeAux = nome[atual]
             precoAux = preco[atual]
             avaliacaoAux = avaliacao[atual]
-            if(id[atual] > id[seguinte]){
+            if(id[atual] > id[seguinte]){ 
                 id[atual] = id[seguinte]
                 nome[atual] = nome[seguinte]
                 preco[atual] = preco[seguinte]
@@ -79,7 +79,12 @@ function OrdenarPorID(){
                 avaliacao[seguinte] = avaliacaoAux
             }
         }
-    }
+    }     
+    console.log(`Produtos ordenados pelo ID:`)    
+    console.log("ID:", id)
+    console.log("Nome: ", nome)
+    console.log("Preço: ", "R$", preco)
+    console.log("Avaliação: ", avaliacao)   
 }
 
 function OrdenarPorPreco(){
@@ -101,4 +106,35 @@ function OrdenarPorPreco(){
             }
         }
     }
+    console.log(`Produtos ordenados pelo Preço:`)    
+    console.log("ID:", id)
+    console.log("Nome: ", nome)
+    console.log("Preço: ", "R$", preco)
+    console.log("Avaliação: ", avaliacao)
+}
+
+function OrdenarPorAvaliacao(){
+    for(var atual = 0; atual < contador - 1; atual++){
+        for(var seguinte = atual + 1; seguinte < contador; seguinte++ ){
+            idAux = id[atual]
+            nomeAux = nome[atual]
+            precoAux = preco[atual]
+            avaliacaoAux = avaliacao[atual]
+            if(avaliacao[atual] < avaliacao[seguinte]){
+                id[atual] = id[seguinte]
+                nome[atual] = nome[seguinte]
+                preco[atual] = preco[seguinte]
+                avaliacao[atual] = avaliacao[seguinte]
+                id[seguinte] = idAux
+                nome[seguinte] = nomeAux
+                preco[seguinte] = precoAux
+                avaliacao[seguinte] = avaliacaoAux
+            }
+        }
+    }
+    console.log(`Produtos ordenados pela Avaliação:`)    
+    console.log("ID:", id)
+    console.log("Nome: ", nome)
+    console.log("Preço: ", "R$", preco)
+    console.log("Avaliação: ", avaliacao)
 }
