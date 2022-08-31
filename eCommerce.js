@@ -29,7 +29,9 @@ OrdenarPorPreco()
 
 OrdenarPorAvaliacao()
 
-
+var idProduto = parseInt(prompt(`Qual ID deseja buscar?`))
+var novoPreco = parseFloat(prompt(`Qual o valor atualizado?`))
+AtualizarPrecoProduto(idProduto, novoPreco)
 
 
 function CadastrarProduto(){
@@ -137,4 +139,13 @@ function OrdenarPorAvaliacao(){
     console.log("Nome: ", nome)
     console.log("Preço: ", "R$", preco)
     console.log("Avaliação: ", avaliacao)
+}
+
+function AtualizarPrecoProduto(idParametro, precoParametro){
+    for(var i = 0; i < contador; i++){
+        if(idParametro == id[i]){
+            preco[i] = precoParametro
+        }
+    }
+    console.log("Preço: ", "R$", preco)
 }
