@@ -2,7 +2,8 @@ var id = []
 var nome = []
 var preco = []
 var avaliacao = []
-contador = 0
+var contador = 0
+
 
 var opcao = 1
 while(opcao != 9){
@@ -53,7 +54,7 @@ function CadastrarProduto(){
     nome[contador] = prompt(`Qual o nome do produto`)
     preco[contador] = parseFloat(prompt(`Qual o preço do produto`))
     avaliacao[contador] = parseInt(prompt(`Qual a avaliação do produto`))
-    contador++   
+    contador++    
 }
 
 function BuscarProdutoID(idParametro){
@@ -73,83 +74,17 @@ function BuscarProdutoNome(produtoParametro){
 }
 
 function OrdenarPorID(){
-    for(var atual = 0; atual < contador - 1; atual++){
-        for(var seguinte = atual + 1; seguinte < contador; seguinte++ ){
-            idAux = id[atual] 
-            nomeAux = nome[atual]
-            precoAux = preco[atual]
-            avaliacaoAux = avaliacao[atual]
-            if(id[atual] > id[seguinte]){ 
-                id[atual] = id[seguinte]
-                nome[atual] = nome[seguinte]
-                preco[atual] = preco[seguinte]
-                avaliacao[atual] = avaliacao[seguinte]
-                id[seguinte] = idAux
-                nome[seguinte] = nomeAux
-                preco[seguinte] = precoAux
-                avaliacao[seguinte] = avaliacaoAux
-            }
-        }
-    }     
-    console.log(`Produtos ordenados pelo ID:`)    
-    console.log("ID:", id)
-    console.log("Nome: ", nome)
-    console.log("Preço: ", "R$", preco)
-    console.log("Avaliação: ", avaliacao)   
+    Ordenar(id)
 }
-
+   
 function OrdenarPorPreco(){
-    for(var atual = 0; atual < contador - 1; atual++){
-        for(var seguinte = atual + 1; seguinte < contador; seguinte++ ){
-            idAux = id[atual]
-            nomeAux = nome[atual]
-            precoAux = preco[atual]
-            avaliacaoAux = avaliacao[atual]
-            if(preco[atual] < preco[seguinte]){
-                id[atual] = id[seguinte]
-                nome[atual] = nome[seguinte]
-                preco[atual] = preco[seguinte]
-                avaliacao[atual] = avaliacao[seguinte]
-                id[seguinte] = idAux
-                nome[seguinte] = nomeAux
-                preco[seguinte] = precoAux
-                avaliacao[seguinte] = avaliacaoAux
-            }
-        }
-    }
-    console.log(`Produtos ordenados pelo Preço:`)    
-    console.log("ID:", id)
-    console.log("Nome: ", nome)
-    console.log("Preço: ", "R$", preco)
-    console.log("Avaliação: ", avaliacao)
+    Ordenar(preco)
 }
 
 function OrdenarPorAvaliacao(){
-    for(var atual = 0; atual < contador - 1; atual++){
-        for(var seguinte = atual + 1; seguinte < contador; seguinte++ ){
-            idAux = id[atual]
-            nomeAux = nome[atual]
-            precoAux = preco[atual]
-            avaliacaoAux = avaliacao[atual]
-            if(avaliacao[atual] < avaliacao[seguinte]){
-                id[atual] = id[seguinte]
-                nome[atual] = nome[seguinte]
-                preco[atual] = preco[seguinte]
-                avaliacao[atual] = avaliacao[seguinte]
-                id[seguinte] = idAux
-                nome[seguinte] = nomeAux
-                preco[seguinte] = precoAux
-                avaliacao[seguinte] = avaliacaoAux
-            }
-        }
-    }
-    console.log(`Produtos ordenados pela Avaliação:`)    
-    console.log("ID:", id)
-    console.log("Nome: ", nome)
-    console.log("Preço: ", "R$", preco)
-    console.log("Avaliação: ", avaliacao)
+    Ordenar(avaliacao)
 }
-
+   
 function AtualizarPrecoProduto(idParametro, precoParametro){
     for(var i = 0; i < contador; i++){
         if(idParametro == id[i]){
@@ -203,6 +138,31 @@ function DeletarProduto(excluirParametro){
     avaliacao = avaliacaoAux
     contador--
 
+console.log("ID:", id)
+console.log("Nome: ", nome)
+console.log("Preço: ", "R$", preco)
+console.log("Avaliação: ", avaliacao)
+}
+
+function Ordenar(propriedadeParametro){
+    for(var atual = 0; atual < contador - 1; atual++){
+        for(var seguinte = atual + 1; seguinte < contador; seguinte++ ){
+            idAux = id[atual]
+            nomeAux = nome[atual]
+            precoAux = preco[atual]
+            avaliacaoAux = avaliacao[atual]
+            if(propriedadeParametro[atual] > propriedadeParametro[seguinte]){
+                id[atual] = id[seguinte]
+                nome[atual] = nome[seguinte]
+                preco[atual] = preco[seguinte]
+                avaliacao[atual] = avaliacao[seguinte]
+                id[seguinte] = idAux
+                nome[seguinte] = nomeAux
+                preco[seguinte] = precoAux
+                avaliacao[seguinte] = avaliacaoAux
+            }
+        }
+}
 console.log("ID:", id)
 console.log("Nome: ", nome)
 console.log("Preço: ", "R$", preco)
